@@ -4,9 +4,9 @@ RUN yum -y update && yum clean all
 RUN yum -y install httpd httpd-devel gcc* make && yum clean all
 
 # Install mod_jk
-RUN curl -SL http://mirror.sdunix.com/apache/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.40-src.tar.gz -o tomcat-connectors-1.2.40-src.tar.gz \
+RUN curl -SL http://ftp.tsukuba.wide.ad.jp/software/apache/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.43-src.tar.gz -o tomcat-connectors-1.2.43-src.tar.gz \
     && mkdir -p src/tomcat-connectors \
-    && tar xzf tomcat-connectors-1.2.40-src.tar.gz -C src/tomcat-connectors --strip-components=1 \
+    && tar xzf tomcat-connectors-1.2.43-src.tar.gz -C src/tomcat-connectors --strip-components=1 \
     && cd src/tomcat-connectors/native/ \
     && ./configure --with-apxs=/usr/bin/apxs \
     && make \
@@ -14,7 +14,7 @@ RUN curl -SL http://mirror.sdunix.com/apache/tomcat/tomcat-connectors/jk/tomcat-
     && ./libtool --finish /usr/lib64/httpd/modules/ \
     && cd / \
     && rm -rf src/ \
-    && rm -f tomcat-connectors-1.2.40-src.tar.gz
+    && rm -f tomcat-connectors-1.2.43-src.tar.gz
 
 
 # mod_jk conf files
